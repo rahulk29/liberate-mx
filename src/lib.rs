@@ -173,6 +173,7 @@ fn generate_paths(params: &LibParams) -> Result<GeneratedPaths> {
     std::fs::create_dir_all(&params.work_dir)?;
     std::fs::create_dir_all(params.work_dir.join("src"))?;
     std::fs::create_dir_all(params.work_dir.join("logs"))?;
+    std::fs::create_dir_all(&params.save_dir)?;
 
     let work_dir = &params.work_dir;
     Ok(GeneratedPaths {
