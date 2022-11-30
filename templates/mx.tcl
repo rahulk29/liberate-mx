@@ -73,7 +73,7 @@ char_memory
 ###WRITE MODELS##########################################
 
 write_ldb -overwrite {{ ldb_path }}
-write_library -sync_ldb -sdf_edges -si -overwrite -filename {{ lib_path }}$cell
+write_library -sync_ldb -sdf_edges -si -overwrite -filename {{ lib_path }} $cell
 read_library {{ lib_path }}
 write_verilog -use_liberate_function {{ verilog_path }}
 
