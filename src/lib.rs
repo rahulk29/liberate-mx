@@ -56,7 +56,7 @@ pub struct LibParams {
     pub data_width: usize,
 
     /// The number of address bits.
-    pub address_width: usize,
+    pub addr_width: usize,
 
     /// The number of write mask bits.
     pub wmask_width: usize,
@@ -88,7 +88,7 @@ struct TemplateCtx<'a> {
     cell_name: &'a str,
     num_words: usize,
     data_width: usize,
-    address_width: usize,
+    addr_width: usize,
     wmask_width: usize,
     mux_ratio: usize,
 
@@ -196,7 +196,7 @@ fn render_templates(params: &LibParams, paths: &GeneratedPaths) -> Result<()> {
         cell_name: &params.cell_name,
         num_words: params.num_words,
         data_width: params.data_width,
-        address_width: params.address_width,
+        addr_width: params.addr_width,
         wmask_width: params.wmask_width,
         mux_ratio: params.mux_ratio,
         corner: &params.corner,

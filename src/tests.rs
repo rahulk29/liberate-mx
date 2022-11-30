@@ -24,7 +24,7 @@ fn test_generate_lib_sram() {
         .cell_name("sramgen_sram_32x32m2w8_replica_v1")
         .num_words(32)
         .data_width(32)
-        .address_width(5)
+        .addr_width(5)
         .wmask_width(4)
         .mux_ratio(2)
         .source_paths(src_files)
