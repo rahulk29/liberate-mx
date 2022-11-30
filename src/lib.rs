@@ -122,7 +122,7 @@ struct GeneratedPaths {
 
 /// Generate a Liberty file.
 pub fn generate_lib(params: &LibParams) -> Result<LibData> {
-    let paths = generate_paths(params);
+    let paths = generate_paths(params)?;
     render_templates(params, &paths)?;
     execute_run_script(params, &paths)?;
 
@@ -169,9 +169,13 @@ fn execute_run_script(params: &LibParams, paths: &GeneratedPaths) -> Result<()> 
     Ok(())
 }
 
-fn generate_paths(params: &LibParams) -> GeneratedPaths {
+fn generate_paths(params: &LibParams) -> Result<GeneratedPaths> {
+    std::fs::create_dir_all(&params.work_dir)?;
+    std::fs::create_dir_all(params.work_dir.join("src"))?;
+    std::fs::create_dir_all(params.work_dir.join("logs"))?;
+
     let work_dir = &params.work_dir;
-    GeneratedPaths {
+    Ok(GeneratedPaths {
         template_path: work_dir.join("template.tcl"),
         netlist_path: work_dir.join("src/netlist.spice"),
         models_path: work_dir.join("src/models.spice"),
@@ -183,7 +187,7 @@ fn generate_paths(params: &LibParams) -> GeneratedPaths {
         ldb_path: work_dir.join(ldb_file_name(params)),
         lib_path: work_dir.join(lib_file_name(params)),
         verilog_path: work_dir.join(verilog_file_name(params)),
-    }
+    })
 }
 
 fn render_templates(params: &LibParams, paths: &GeneratedPaths) -> Result<()> {
