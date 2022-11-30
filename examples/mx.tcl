@@ -16,8 +16,8 @@ set corner tt
 # exec ./scripts/replace_primitives.sh src/$cell.spice
 
 # Identify primitives (leafcells)
-define_leafcell -type nmos { npass npd nshort }
-define_leafcell -type pmos { pshort ppu }
+define_leafcell -element -type nmos { npass npd nshort nlowvt }
+define_leafcell -element -type pmos { pshort ppu phighvt }
 define_leafcell -type diode { nwdiode ndiode }
 
 ### TOOL OPTIONS ######################################
