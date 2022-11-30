@@ -1,6 +1,4 @@
-#!/bin/bash
-
-set -efx -o pipefail
+#!/usr/bin/bash
 
 export ALTOSHOME=/tools/cadence/LIBERATE/LIBERATE217
 export PATH=$ALTOSHOME/bin:$ALTOSHOME/tools.lnx86/spectre/bin:$PATH
