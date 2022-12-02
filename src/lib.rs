@@ -89,6 +89,7 @@ struct TemplateCtx<'a> {
     num_words: usize,
     data_width: usize,
     addr_width: usize,
+    has_wmask: bool,
     wmask_width: usize,
     mux_ratio: usize,
 
@@ -197,6 +198,7 @@ fn render_templates(params: &LibParams, paths: &GeneratedPaths) -> Result<()> {
         num_words: params.num_words,
         data_width: params.data_width,
         addr_width: params.addr_width,
+        has_wmask: params.wmask_width > 1,
         wmask_width: params.wmask_width,
         mux_ratio: params.mux_ratio,
         corner: &params.corner,

@@ -41,7 +41,7 @@ define_template -type power \
 if {[ALAPI_active_cell "{{ cell_name }}"]} {
 define_cell \
        -clock { clk } \
-       -input { din[{{data_width - 1}}:0] addr[{{addr_width - 1}}:0] we wmask[{{wmask_width - 1}}:0] } \
+       -input { din[{{data_width - 1}}:0] addr[{{addr_width - 1}}:0] we {% if has_wmask -%} wmask[{{wmask_width - 1}}:0] {%- endif %} } \
        -output { dout[{{data_width - 1}}:0] } \
        -delay delay_template_3x3 \
        -power power_template_3x3 \
@@ -148,6 +148,7 @@ define_arc \
        -pin {we} \
        {{ cell_name }}
 
+{% if has_wmask -%}
 # constraint arcs from clk => wmask[{{wmask_width - 1}}:0]  hold_rising
 define_arc \
        -type hold \
@@ -177,6 +178,7 @@ define_arc \
        -related_pin {clk} \
        -pin {wmask[{{wmask_width - 1}}:0]} \
        {{ cell_name }}
+{%- endif %}
 
 # power arcs from  => clk  power
 define_arc \
