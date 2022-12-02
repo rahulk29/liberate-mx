@@ -63,7 +63,7 @@ define_memory \
     -write_enable {we H} \
     {% if has_wmask -%}
     -bit_mask {wmask L} \
-    {%- endif %}
+    {%- endif -%}
     -words $words \
     -bits $bits \
     -column_mux {{ mux_ratio }} \
