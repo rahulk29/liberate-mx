@@ -35,9 +35,9 @@ pub struct LibParams {
     #[builder(setter(into))]
     pub work_dir: PathBuf,
 
-    /// The directory in which to save the final Liberate file.
+    /// The directory in which to save the final Liberty file.
     #[builder(setter(into))]
-    pub save_dir: PathBuf,
+    pub output_file: PathBuf,
 
     /// The process corner to use for characterization.
     ///
@@ -128,16 +128,21 @@ pub fn generate_lib(params: &LibParams) -> Result<LibData> {
     execute_run_script(params, &paths)?;
 
     // move lib file to correct location
-    let lib_file = params.save_dir.join(lib_file_name(params));
+    let lib_file = params.output_file.clone();
     std::fs::copy(paths.lib_path, &lib_file)?;
     Ok(LibData { lib_file })
 }
 
+/// The name of the generated LDB file.
+///
+/// Determined by Liberate MX. Do not change this unless the Liberate version has changed.
 fn ldb_file_name(params: &LibParams) -> String {
     format!("{}_{}_025C_1v80.ldb", params.cell_name, params.corner)
 }
 
 /// The name of the generated Liberty file.
+///
+/// Determined by Liberate MX. Do not change this unless the Liberate version has changed.
 pub fn lib_file_name(params: &LibParams) -> String {
     format!("{}_{}_025C_1v80.lib", params.cell_name, params.corner)
 }
@@ -174,7 +179,9 @@ fn generate_paths(params: &LibParams) -> Result<GeneratedPaths> {
     std::fs::create_dir_all(&params.work_dir)?;
     std::fs::create_dir_all(params.work_dir.join("src"))?;
     std::fs::create_dir_all(params.work_dir.join("logs"))?;
-    std::fs::create_dir_all(&params.save_dir)?;
+    if let Some(parent) = params.output_file.parent() {
+        std::fs::create_dir_all(parent)?;
+    }
 
     let work_dir = &params.work_dir;
     Ok(GeneratedPaths {
