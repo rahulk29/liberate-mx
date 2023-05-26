@@ -61,6 +61,10 @@ pub struct LibParams {
     /// The number of write mask bits.
     pub wmask_width: usize,
 
+    /// Whether the SRAM has a write mask.
+    #[builder(default)]
+    pub has_wmask: bool,
+
     /// The column mux ratio.
     pub mux_ratio: usize,
 
@@ -205,7 +209,7 @@ fn render_templates(params: &LibParams, paths: &GeneratedPaths) -> Result<()> {
         num_words: params.num_words,
         data_width: params.data_width,
         addr_width: params.addr_width,
-        has_wmask: params.wmask_width > 1,
+        has_wmask: params.has_wmask,
         wmask_width: params.wmask_width,
         mux_ratio: params.mux_ratio,
         corner: &params.corner,

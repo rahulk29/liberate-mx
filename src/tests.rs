@@ -19,7 +19,7 @@ fn test_generate_lib_sram() {
 
     let params = LibParams::builder()
         .work_dir(work_dir)
-        .save_dir(save_dir)
+        .output_file(save_dir.join("abstract.lef"))
         .corner("tt")
         .cell_name("sramgen_sram_32x32m2w8_replica_v1")
         .num_words(32)
