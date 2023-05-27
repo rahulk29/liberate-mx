@@ -37,7 +37,7 @@ set_var mx_check_arcs 1
 set_var mx_find_virtual_rails 2
 # use new virtual rail modeling method. must also turn off mx_reuse
 # set_var mx_virtual_rail_modeling_mode 1
-# set_var mx_fastsim_reuse 0
+set_var mx_fastsim_reuse 0
 # allow for clk2clk constraint characterization
 set_var mx_clock2clock_constraints 1
 # generate clock tree report
@@ -63,7 +63,7 @@ define_memory \
     -write_enable {we H} \
     {% if has_wmask -%}
     -bit_mask {wmask L} \
-    {%- endif -%}
+    {% endif -%}
     -words $words \
     -bits $bits \
     -column_mux {{ mux_ratio }} \
