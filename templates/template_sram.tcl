@@ -1,3 +1,12 @@
+# --------------------------------------------------------------------------------
+# This script was written and developed by the LIBERATE_MX PLUGIN at UC Berkeley;
+# however, the underlying commands and reports are copyrighted by Cadence. We
+# thank Cadence for granting permission to share our research to help promote and
+# foster the next generation of innovators.
+# --------------------------------------------------------------------------------
+
+# SRAM characterization settings
+
 set_var slew_lower_rise 0.1
 set_var slew_lower_fall 0.1
 set_var slew_upper_rise 0.9
