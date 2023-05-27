@@ -1,3 +1,10 @@
+# --------------------------------------------------------------------------------
+# This script was written and developed by the LIBERATE_MX PLUGIN at UC Berkeley;
+# however, the underlying commands and reports are copyrighted by Cadence. We
+# thank Cadence for granting permission to share our research to help promote and
+# foster the next generation of innovators.
+# --------------------------------------------------------------------------------
+
 ### USER SETTINGS ####################################
 
 # Set cell name and bitcell type (single-port, dual-port, rom)
@@ -11,9 +18,6 @@ set bitcell single_port
 set corner {{ corner }}
 
 ### DESIGN OPTIONS ####################################
-
-# Hack existing netlist
-# exec ./scripts/replace_primitives.sh src/$cell.spice
 
 # Identify primitives (leafcells)
 define_leafcell -element -type nmos { npass npd nshort nlowvt }
