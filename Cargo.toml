@@ -2,8 +2,12 @@
 name = "liberate_mx"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["Rahul Kumar <rahulkumar@berkeley.edu>"]
+description = "Interface for running Cadence's Liberate MX from Rust code"
+readme = "README.md"
+repository = "https://github.com/rahulk29/liberate-mx"
+license = "BSD-3-Clause"
+exclude = ["/examples"]
 
 [dependencies]
 derive_builder = "0.12"
