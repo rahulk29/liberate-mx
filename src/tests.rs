@@ -6,9 +6,7 @@ use crate::{generate_lib, LibParams};
 /// Tests LIB generation for a generic SRAM instance.
 #[test]
 fn test_generate_lib_sram() {
-    let src_files = vec![
-        PathBuf::from(EXAMPLES_PATH).join("sram22_256x32m4w8.spice"),
-    ];
+    let src_files = vec![PathBuf::from(EXAMPLES_PATH).join("sram22_256x32m4w8.spice")];
     let work_dir = PathBuf::from(TEST_BUILD_PATH).join("sram22_256x32m4w8/lib");
     let save_dir = PathBuf::from(TEST_BUILD_PATH).join("sram22_256x32m4w8");
 
@@ -40,9 +38,7 @@ fn test_generate_lib_sram() {
 /// Tests LIB generation for an SRAM with a single bit write mask.
 #[test]
 fn test_generate_lib_sram_1bit_mask() {
-    let src_files = vec![
-        PathBuf::from(EXAMPLES_PATH).join("sram22_512x32m4w32.spice"),
-    ];
+    let src_files = vec![PathBuf::from(EXAMPLES_PATH).join("sram22_512x32m4w32.spice")];
     let work_dir = PathBuf::from(TEST_BUILD_PATH).join("sram22_512x32m4w32/lib");
     let save_dir = PathBuf::from(TEST_BUILD_PATH).join("sram22_512x32m4w32");
 
